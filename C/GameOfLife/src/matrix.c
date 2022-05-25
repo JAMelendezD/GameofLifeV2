@@ -70,7 +70,7 @@ void matrix_print(Matrix *m, int fps) {
     }
 
     usleep((1.0/fps)*pow(10, 6));
-
+    
     for (int i = 0; i < m->rows + 1; i++) {
         printf("\x1b[1A\r");
     }
