@@ -54,8 +54,6 @@ void matrix_free(Matrix *m) {
 }
 
 void matrix_print(Matrix *m, int fps) {
-    
-    printf("\n"); 
 
     for (int i = 0; i < m->rows; i++) {
         for (int j = 0; j < m->cols; j++) {
@@ -74,9 +72,9 @@ void matrix_print(Matrix *m, int fps) {
     usleep((1.0/fps)*pow(10, 6));
 
     for (int i = 0; i < m->rows + 1; i++) {
-        printf("\x1b[1A\x1b[2K");
+        printf("\x1b[1A\r");
     }
-
+    printf("\n");
 }
 
 Matrix* matrix_copy(Matrix *m) {

@@ -26,16 +26,14 @@ int main(int argc, char **argv) {
     matrix_fill(world);
     matrix_print(world, fps);
 
-    printf("Started simulation\n");
-    printf("Frame = %06d", 0);
+    //printf("Started simulation\n");
     clock_t start = clock();
     for (int frame = 1; frame < frames + 1; frame++) {
         matrix_conway_torus(world);
-        printf("Frame = %06d", frame);
         matrix_print(world, fps);
     }
-    printf("Finished simulation in: %6.2f seconds\n",
-            ((double)clock() - start)/CLOCKS_PER_SEC);
+    //printf("Finished simulation in: %6.2f seconds\n",
+    //        ((double)clock() - start)/CLOCKS_PER_SEC);
 
     /*
     Matrix *world = matrix_create(rows, cols);
