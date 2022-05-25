@@ -1,3 +1,2 @@
-*/*.obj
-*/build/gameoflife
-*/build/tests
+C/GameOfLife/build/*
+C/GameOfLife/obj/*
