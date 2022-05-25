@@ -1,5 +1,5 @@
-SRC = @srcdir@
-IDIR = @srcdir@/../include
+SRC = @srcdir@/src/
+IDIR = @srcdir@/include
 CC = @CC@
 CFLAGS = @CFLAGS@ -I$(IDIR)
 
@@ -36,10 +36,10 @@ install:
 .PHONY: clean
 
 clean:
-	rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~
+	rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~ gameoflife tests
 
 clean_make:
-	rm Makefile
+	rm Makefile config.log config.status
 
 distclean: clean clean_make
 
