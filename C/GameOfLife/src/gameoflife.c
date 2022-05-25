@@ -10,9 +10,8 @@ int main(int argc, char **argv) {
     
     if (argc < 4) {
         printf("Missing arguments\n");
-        printf("It should be run as ./gameoflife rows cols frames fps\n");
-        printf("Rows and cols determine the grid size\n");
-        printf("Frames how long to run for and fps the frames per second\n");
+        printf("It should be run as ./gameoflife rows cols fps\n");
+        printf("Rows and cols determine the grid size and then the fps\n");
         exit(-1);
     }
 

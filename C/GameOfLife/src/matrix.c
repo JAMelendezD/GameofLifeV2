@@ -59,18 +59,18 @@ void matrix_print(Matrix *m, int fps) {
         for (int j = 0; j < m->cols; j++) {
             if (m->entries[i][j] == 0) {
                 printf(ANSI_COLOR_DEAD "\u25A0 " ANSI_COLOR_RESET);
-                //printf("🍑");
+                //printf("🕸 ");
             }
             else {
                 printf(ANSI_COLOR_ALIVE "\u25A0 " ANSI_COLOR_RESET);
-                //printf("🍆");
+                //printf("🕷 ");
             }
         }
         printf("\n");    
     }
 
     usleep((1.0/fps)*pow(10, 6));
-    
+
     for (int i = 0; i < m->rows + 1; i++) {
         printf("\x1b[1A\r");
     }
