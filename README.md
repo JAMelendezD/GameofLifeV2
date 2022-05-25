@@ -10,6 +10,12 @@ make; make check; make install
 ```
 If used without a prefix then you need to do `sudo make install`.
 
+## Execution
+
+You can control and need to provide the number of rows, number of columns, frames and fps as follows:
+
+`gameoflife 50 50 500 10`
+
 ## Example
 
 <p align="center">
