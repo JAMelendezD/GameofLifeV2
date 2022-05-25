@@ -1,11 +1,13 @@
-IDIR =../include
-CC = gcc
-CFLAGS = -I$(IDIR)
+SRC = @srcdir@
+IDIR = @srcdir@/../include
+CC = @CC@
+CFLAGS = @CFLAGS@ -I$(IDIR)
 
-ODIR = obj
-LDIR = ../lib
+ODIR = @srcdir@/obj
+LDIR = @srcdir@/lib
 
-LIBS = -lm
+LIBS = @LIBS@ -lm
+
 
 _DEPS = matrix.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
@@ -16,8 +18,6 @@ OBJ_main = $(patsubst %,$(ODIR)/%,$(_OBJ_main))
 _OBJ_tests = matrix.o tests.o
 OBJ_tests = $(patsubst %,$(ODIR)/%,$(_OBJ_tests))
 
-$(ODIR)/%.o: %.c $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS)
 
 all: gameoflife tests
 
@@ -31,9 +31,17 @@ check:
 	./tests
 
 install:
-	mv gameoflife ~/local/bin
+	@INSTALL@ -m 775 gameoflife @prefix@/bin
 
 .PHONY: clean
 
 clean:
 	rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~
+
+clean_make:
+	rm Makefile
+
+distclean: clean clean_make
+
+$(ODIR)/%.o: $(SRC)/%.c $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS)
