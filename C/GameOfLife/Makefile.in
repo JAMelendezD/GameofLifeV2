@@ -31,6 +31,7 @@ check:
 	./tests
 
 install:
+	@INSTALL@ -d @prefix@/bin
 	@INSTALL@ -m 775 gameoflife @prefix@/bin
 
 .PHONY: clean
