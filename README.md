@@ -1,1 +1,1 @@
-# GameofLifeV2
+# Game of Life (V2)
