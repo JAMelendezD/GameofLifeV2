@@ -1,6 +1,4 @@
-*.o
-*/.cache
+*/obj
+*/build
 gameoflife
 tests
-*.log
-*.status
