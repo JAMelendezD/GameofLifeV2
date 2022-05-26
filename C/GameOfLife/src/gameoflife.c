@@ -1,9 +1,12 @@
+// -----------------------------------------------------------------------------
+// gameoflife.c : Conways game of life in C.
+// -----------------------------------------------------------------------------
+
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "../include/matrix.h"
 
-#define MAXCHAR 100
 #define FRAMES 1000000
 
 int main(int argc, char **argv) {
@@ -18,7 +21,6 @@ int main(int argc, char **argv) {
     int rows = atoi(argv[1]);
     int cols = atoi(argv[2]);
     int fps = atoi(argv[3]);
-    char *fname = (char*)malloc(MAXCHAR * sizeof(char));
 
     Matrix *world = matrix_create(rows, cols);
     matrix_fill(world);
@@ -30,7 +32,5 @@ int main(int argc, char **argv) {
     }
 
     matrix_free(world);
-    free(fname);
-
     return 0;
 }

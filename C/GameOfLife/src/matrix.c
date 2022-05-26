@@ -23,6 +23,28 @@ Matrix* matrix_create(int row, int col) {
     return matrix;
 }
 
+void matrix_free(Matrix *m) {
+
+	for (int i = 0; i < m->rows; i++) {
+		free(m->entries[i]);
+	}
+	free(m->entries);
+    free(m);
+	m = NULL;
+}
+
+Matrix* matrix_copy(Matrix *m) {
+
+	Matrix* cm = matrix_create(m->rows, m->cols);
+
+	for (int i = 0; i < m->rows; i++) {
+		for (int j = 0; j < m->cols; j++) {
+			cm->entries[i][j] = m->entries[i][j];
+		}
+	}
+	return cm;
+}
+
 void matrix_fill(Matrix *m) {    
 
     srand(time(0));
@@ -41,15 +63,6 @@ void matrix_fill_num(Matrix *m, int n) {
             m->entries[i][j] = n;
         }
     }
-}
-
-void matrix_free(Matrix *m) {
-
-	for (int i = 0; i < m->rows; i++) {
-		free(m->entries[i]);
-	}
-	free(m);
-	m = NULL;
 }
 
 void matrix_print(Matrix *m, int fps) {
@@ -74,24 +87,12 @@ void matrix_print(Matrix *m, int fps) {
     printf("\n");
 }
 
-Matrix* matrix_copy(Matrix *m) {
-
-	Matrix* mat = matrix_create(m->rows, m->cols);
-
-	for (int i = 0; i < m->rows; i++) {
-		for (int j = 0; j < m->cols; j++) {
-			mat->entries[i][j] = m->entries[i][j];
-		}
-	}
-	return mat;
-}
-
 void matrix_conway_torus(Matrix *m) {    
     
     // Can be improved to not do % so many times
+    // Memory wise also to operate on bits
 
     Matrix* cm = matrix_copy(m);
-    
     int rs = m->rows;
     int cs = m->cols;
 
