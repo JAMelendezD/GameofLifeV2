@@ -2,7 +2,7 @@
 #include <stdbool.h>
 
 typedef struct {
-    int **entries;
+    short **entries;
     int rows;
     int cols;
 }   Matrix;
