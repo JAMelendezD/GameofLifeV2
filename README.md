@@ -5,9 +5,10 @@
 ```
 mkdir build
 cd build
-./config --prefix=/place/to/install
+../config --prefix=/place/to/install
 make; make check; make install
 ```
+
 If you use the config without a prefix then you will probably need to do `sudo make install`.
 
 ## Execution
