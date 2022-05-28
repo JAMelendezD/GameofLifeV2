@@ -8,7 +8,7 @@
 #include <string.h> 
 #include "../include/matrix.h"
 
-#define FRAMES 1000000
+#define FRAMES 10000
 
 void usage(char *name) {
     fprintf(stderr, "Usage: %s --help --rows <N> --cols <N> --fps <f>\n", name);
@@ -57,7 +57,7 @@ int main(int argc, char **argv) {
                 usage(argv[0]);
             }
             iarg++;
-            if (sscanf(argv[iarg], "%d", &rows) != 1 || cols < 1) {
+            if (sscanf(argv[iarg], "%d", &cols) != 1 || cols < 1) {
                 fprintf(stderr, "Error: Invalid number of cols: %s\n",
                         argv[iarg]);
                 usage(argv[0]);

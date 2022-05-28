@@ -1,3 +1,7 @@
+## -----------------------------------------------------------------------------
+## gameoflife.py : Conways game of life in Python.
+## -----------------------------------------------------------------------------
+
 import numpy as np
 from time import sleep
 
@@ -14,14 +18,14 @@ class GameOfLife():
         self.fps = fps
         self.world = np.array(np.random.rand(self.rows, self.cols) > 0.5, dtype=int)
 
-    def world_print(self):
+    def world_print(self, alive, dead):
     
         for i in range(self.rows):
             for j in range(self.cols):
                 if self.world[i][j] == 0:
-                    print(self.ANSI_COLOR_DEAD + "\u25A0 " + self.ANSI_COLOR_RESET, end = "")
+                    print(self.ANSI_COLOR_DEAD + alive + self.ANSI_COLOR_RESET, end = "")
                 else:
-                    print(self.ANSI_COLOR_ALIVE + "\u25A0 "  + self.ANSI_COLOR_RESET, end = "")
+                    print(self.ANSI_COLOR_ALIVE + dead + self.ANSI_COLOR_RESET, end = "")
             print()   
 
         sleep((1.0/fps))
@@ -56,7 +60,7 @@ if __name__ == "__main__":
 
     from argparse import ArgumentParser
 
-    MAX_TIME = 1000000
+    MAX_TIME = 10000
 
     parser = ArgumentParser(description="Python Game of Life")
     
@@ -66,20 +70,30 @@ if __name__ == "__main__":
     
     parser.add_argument("--cols", "-c",
                         help="Number of collumns of the grid",
-                        type=float, default=50)
+                        type=int, default=50)
 
     parser.add_argument("--fps", "-f",
                         help="Frames per second",
-                        type=float, default=10)
+                        type=int, default=10)
+
+    parser.add_argument("--dead", "-d",
+                        help="Character for dead",
+                        type=str, default="\u25A0 ")
+    
+    parser.add_argument("--alive", "-a",
+                        help="Character for alive",
+                        type=str, default="\u25A0 ")
 
     args = parser.parse_args()
     rows = args.rows
     cols = args.cols
     fps = args.fps
+    dead = args.dead
+    alive = args.alive
 
     game = GameOfLife(rows, cols, fps)
-    game.world_print()
+    game.world_print(dead, alive)
 
     for i in range(MAX_TIME):
         game.world_update()
-        game.world_print()
+        game.world_print(dead, alive)
