@@ -1,6 +1,5 @@
 import numpy as np
 from time import sleep
-from numba import jit
 
 class GameOfLife():
 
