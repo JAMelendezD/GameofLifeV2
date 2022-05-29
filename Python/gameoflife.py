@@ -30,8 +30,7 @@ class GameOfLife():
 
         sleep((1.0/fps))
 
-        for i in range(self.rows):
-            print("\x1b[1A\r", end = "")
+        print(f"\x1b[{self.rows}F", end = "")
             
     def world_update(self):
 

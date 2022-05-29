@@ -7,7 +7,7 @@
 #include "../include/matrix.h"
 
 #define ANSI_COLOR_DEAD   "\x1b[38;2;10;9;59;208m\x1b[48;2;5;5;20;208m"
-#define ANSI_COLOR_RESET   "\x1b[0m"
+#define ANSI_COLOR_RESET  "\x1b[0m"
 #define ANSI_COLOR_ALIVE  "\x1b[38;2;255;228;181;208m\x1b[48;2;5;5;20;208m"
 
 Matrix* matrix_create(int row, int col) {
@@ -80,10 +80,7 @@ void matrix_print(Matrix *m, int fps) {
     }
 
     usleep((1.0/fps)*pow(10, 6));
-
-    for (int i = 0; i < m->rows + 1; i++) {
-        printf("\x1b[1A\r");
-    }
+    printf("\x1b[%dF", m->rows+1);
     printf("\n");
 }
 
