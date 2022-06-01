@@ -28,7 +28,7 @@ class GameOfLife():
                     print(self.ANSI_COLOR_ALIVE + dead + self.ANSI_COLOR_RESET, end = "")
             print()   
 
-        sleep((1.0/fps))
+        sleep((1.0/self.fps))
 
         print(f"\x1b[{self.rows}F", end = "")
             
